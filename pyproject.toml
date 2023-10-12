@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "a4"
+version = "0.0.1"
+authors = [
+  { name="Sun Yijiang", email="sunyijiang@gmail.com" },
+]
+description = "Minimal library for command-line applications."
+readme = "README.md"
+requires-python = ">=3.4"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/sunyj/a4"
+"Bug Tracker" = "https://github.com/sunyj/a4/issues"
