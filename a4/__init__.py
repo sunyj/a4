@@ -9,6 +9,10 @@ __all__ = [ 'die'
           ]
 
 
+if __name__ == '__main__':
+    MyApp().run()
+
+
 import sys
 import os
 import re
