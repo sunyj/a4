@@ -20,7 +20,7 @@ highly opinionated opinion, should be included in all logging libraries:
 
 `a4.app` provides a decorator `Runnable` to convert a class into a runnable
 command-line application. All class methods *NOT* starting with understore
-are recognized as a sub-command. This pattern offers more convenience over
+are recognized as sub-commands. This pattern offers more convenience over
 single-function decorators when multiple commands require shared resources.
 
 ```python
