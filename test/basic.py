@@ -113,7 +113,7 @@ class TestAux(unittest.TestCase):
         self.assertEqual(len(opt), 15)
         self.assertEqual(args, [])
 
-        opt, args = parse_opts(spec, '-b a b -d'.split())
+        opt, args = parse_opts(spec, '-b a b -d'.split(), greedy=False)
         self.assertEqual(opt['b'], True)
         self.assertEqual(opt['d'], False)
         self.assertEqual(args, ['a', 'b', '-d'])
@@ -123,7 +123,7 @@ class TestAux(unittest.TestCase):
         self.assertEqual(opt['d'], True)
         self.assertEqual(args, ['a', 'b'])
 
-        opt, args = parse_opts(spec, '-b a b -g'.split(), panic=False)
+        opt, args = parse_opts(spec, '-b a b -g'.split(), greedy=False, panic=False)
         self.assertEqual(opt['b'], True)
         self.assertEqual(opt['g'], None)
         self.assertEqual(args, ['a', 'b', '-g'])

@@ -154,7 +154,7 @@ def parse_url(url, **kw):
 
 def get_opts(spec = None, argv = None, **kw):
     panic  = kw.get('panic',  True)
-    greedy = kw.get('greedy', False)
+    greedy = kw.get('greedy', True)
     if argv is None:
         argv = sys.argv[1:]
     if not spec:
@@ -181,7 +181,7 @@ def get_opts(spec = None, argv = None, **kw):
 
 def parse_opts(spec = None, argv = None, **kw):
     panic  = kw.get('panic',  True)
-    greedy = kw.get('greedy', False)
+    greedy = kw.get('greedy', True)
     argc   = kw.get('argc',   None) # die(help) on error
     app    = kw.get('app',    None) # used in die(help)
     if argv is None:
@@ -193,6 +193,8 @@ def parse_opts(spec = None, argv = None, **kw):
     s_spec, l_spec, odict = parse_cmd_spec(spec)
 
     # parse with standard getopt
+    o = {}
+    args = []
     try:
         if greedy:
             (o, args) = getopt.gnu_getopt(argv, s_spec, l_spec)
