@@ -56,6 +56,8 @@ class TestAux(unittest.TestCase):
         self.assertEqual(parse_url('abc?params'), {'host': 'abc'})
         self.assertEqual(parse_url('abc?params,k=v'),
                          {'host': 'abc', 'param': {'k': 'v'}})
+        self.assertEqual(parse_url('127.0.0.1', passwd='secret'),
+                         {'host': '127.0.0.1', 'pass': 'secret'})
 
     def test_get_opts(self):
         opt, args = get_opts('abc:d:', '-a -c val x y'.split())

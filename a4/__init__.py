@@ -146,8 +146,9 @@ def parse_url(url, **kw):
                 if not ret['param']:
                     del ret['param']
     for k in ['proto', 'user', 'pass', 'host', 'port', 'path', 'param']:
-        if k not in ret and k in kw:
-            ret[k] = kw[k]
+        key = 'passwd' if k == 'pass' else k
+        if k not in ret and key in kw:
+            ret[k] = kw[key]
     return ret
 
 
