@@ -5,6 +5,9 @@ from a4 import *
 class TestAux(unittest.TestCase):
     def test_parse_range(self):
         self.assertEqual(parse_range('20200101-31'), ['20200101', '20200131'])
+        self.assertEqual(parse_range('abc'), ['abc', 'abc'])
+        self.assertEqual(parse_range(''), ['', ''])
+        self.assertEqual(parse_range('1-9,20-25'), [['1', '9'], ['20', '25']])
 
     def test_parse_date_range(self):
         self.assertEqual(parse_date_range('20200101-31'), (20200101, 20200131))

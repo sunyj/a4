@@ -44,7 +44,9 @@ def die_usage(spec, *, name = None):
     sys.exit(2)
 
 
-def parse_range(spec, *, sep = '-'):
+def parse_range(spec, *, sep='-', comma=','):
+    if comma and comma in spec:
+        return [parse_range(s, sep=sep, comma=comma) for s in spec.split(comma)]
     ret = spec.split(sep)
     if len(ret) == 1:
         return [spec, spec]
@@ -83,8 +85,8 @@ def parse_date(spec, *, to_str = False, cal = 0):
     return str(dnum) if to_str else dnum
 
 
-def parse_date_range(spec, *, sep = '-'):
-    beg, end = parse_range(spec, sep = sep)
+def parse_date_range(spec, *, sep='-'):
+    beg, end = parse_range(spec, sep=sep, comma=None)
     if int(beg) > int(end):
         raise ValueError('Invalid date range spec')
 
