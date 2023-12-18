@@ -103,7 +103,7 @@ def Runnable(UserApp):
             self.app.debug = opts['V']
             self.app.verbose = self.app.debug or opts['v']
             if self.app.debug:
-                log_level('d')
+                log.level('d')
 
             if args[0] == 'help':
                 if len(args) < 2:
