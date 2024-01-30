@@ -15,8 +15,7 @@ DEBUG = 5
 
 _level = INFO if os.environ.get('DBG', '0') == '0' else DEBUG
 
-
-def _color(color: int = 0, bold: bool = False):
+def _color(color: int = 0, bold: bool = True):
     if not sys.stdout.isatty():
         return ''
     bold = '1;' if bold else ''
@@ -65,7 +64,7 @@ def err(msg):
 
 def warn(msg):
     if _level >= WARN:
-        print(f'{_color(31)}[{_ts()}] WARN {msg}{_color()}\n', end='')
+        print(f'{_color(33)}[{_ts()}] WARN {msg}{_color()}\n', end='')
 
 
 def note(msg):
@@ -81,6 +80,5 @@ def info(msg):
 def dbg(msg):
     if _level >= DEBUG:
         print(f'{_color(37)}[{_ts()}] DBG  {msg}{_color()}\n', end='')
-
 
 ### a4/log.py ends here
