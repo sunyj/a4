@@ -94,7 +94,7 @@ def Runnable(UserApp):
 
 
         def run(self):
-            (opts, args) = get_opts('nvV')
+            (opts, args) = get_opts('nvV', greedy=False)
             if len(args) < 1:
                 self._print_global_usage()
                 sys.exit(0)
