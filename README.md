@@ -15,6 +15,8 @@ highly opinionated opinion, should be included in all logging libraries:
 - Colors.
 - Timestamps.
 
+You may print all logs to stderr with `a4.log.fork=True` (default `False`).
+
 
 ## Yet another command-line application decorator
 
