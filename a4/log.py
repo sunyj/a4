@@ -18,7 +18,7 @@ _level = INFO if os.environ.get('DBG', '0') == '0' else DEBUG
 _pipe = not sys.stdout.isatty()
 
 def _color(color: int = 0):
-    if _pipe:
+    if not fork and _pipe:
         return ''
     return f'\033[1;{color}m' if color else '\033[0m'
 
@@ -61,30 +61,30 @@ def level(level = None):
 def err(msg):
     if _level >= ERROR:
         print(f'{_color(31)}[{_ts()}] ERR  {msg}{_color()}\n', end='',
-              file=sys.stderr if fork and not _pipe else sys.stdout)
+              file=sys.stderr if fork else sys.stdout)
 
 
 def warn(msg):
     if _level >= WARN:
         print(f'{_color(33)}[{_ts()}] WARN {msg}{_color()}\n', end='',
-              file=sys.stderr if fork and not _pipe else sys.stdout)
+              file=sys.stderr if fork else sys.stdout)
 
 
 def note(msg):
     if _level >= NOTE:
         print(f'{_color(32)}[{_ts()}] NOTE {msg}{_color()}\n', end='',
-              file=sys.stderr if fork and not _pipe else sys.stdout)
+              file=sys.stderr if fork else sys.stdout)
 
 
 def info(msg):
     if _level >= INFO:
         print(            f'[{_ts()}] INFO {msg}{_color()}\n', end='',
-              file=sys.stderr if fork and not _pipe else sys.stdout)
+              file=sys.stderr if fork else sys.stdout)
 
 
 def dbg(msg):
     if _level >= DEBUG:
         print(f'{_color(37)}[{_ts()}] DBG  {msg}{_color()}\n', end='',
-              file=sys.stderr if fork and not _pipe else sys.stdout)
+              file=sys.stderr if fork else sys.stdout)
 
 ### a4/log.py ends here
